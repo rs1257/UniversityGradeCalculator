@@ -1,0 +1,45 @@
+table {
+  table-layout: auto;
+  border-collapse: collapse;
+  overflow-x: auto;
+  position: relative;
+}
+
+td {
+  text-align: center;
+  padding: 8px;
+  background-color: lightgray;
+}
+
+th {
+  background-color: dodgerblue;
+  color: white;
+  text-align: center;
+  padding: 8px;
+}
+
+.total {
+  margin-top: 10px;
+}
+
+.AddRow,
+.RemoveRow,
+.Export {
+  font: bold 16px Arial;
+  text-decoration: none;
+  color: white;
+  background: dodgerblue;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #888888;
+  margin: 5px;
+  position: relative;
+  display: inline-block;
+}
+
+.AddRow:hover,
+.RemoveRow:hover,
+.Export:hover {
+  color: black;
+  background-color: royalblue;
+}

@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <title>Uni Grade Calculator</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <script src="src/main.js"></script>
+    <script src="lib/excellentExports.js"></script>
+  </head>
+  <body
+    onmouseover="gettotal(); totalcredits(); truepercentage(); truetotal(); overalltotal(); grade();"
+  >
+    <script>
+      function onBackspace(e, callback) {
+        var key;
+        if (typeof e.keyIdentifier !== "undefined") {
+          key = e.keyIdentifier;
+        } else if (typeof e.keyCode !== "undefined") {
+          key = e.keyCode;
+        }
+        if (key === "U+0008" || key === "Backspace" || key === 8) {
+          if (typeof callback === "function") {
+            callback();
+          }
+          return true;
+        }
+        return false;
+      }
+
+      //event listener
+      window.addEventListener(
+        "keydown",
+        function (e) {
+          switch (e.target.tagName.toLowerCase()) {
+            case "input":
+            case "textarea":
+              break;
+            case "body":
+              onBackspace(e, function () {
+                e.preventDefault();
+              });
+
+              break;
+          }
+        },
+        true
+      );
+    </script>
+    <table border="1" id="tbl">
+      <tr>
+        <th>Module Name</th>
+        <th>Credits</th>
+        <th>Percentage1</th>
+        <th>Grade1</th>
+        <th>Percentage2</th>
+        <th>Grade2</th>
+        <th>Percentage3</th>
+        <th>Grade3</th>
+        <th>Total</th>
+        <th>True Percentage</th>
+        <th>True Total</th>
+      </tr>
+      <tr id="clone">
+        <td contenteditable="true">Module Name</td>
+        <td contenteditable="true">5</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td>0.00</td>
+        <td>4.17</td>
+        <td>0.00</td>
+      </tr>
+      <tr>
+        <th>Total Credits</th>
+        <td>5</td>
+        <th>Overall Credits</th>
+        <td>120</td>
+        <th>Overall Total</th>
+        <td>0.00</td>
+        <th>Grade</th>
+        <td>Fail</td>
+      </tr>
+    </table>
+
+    <a class="AddRow" href="#" onclick="addRow();">Add Row</a>
+    <a class="RemoveRow" href="#" onclick="removeRowFromTable();">Remove Row</a>
+    <a
+      class="Export"
+      download="UniGrade.csv"
+      href="#"
+      onclick="return ExcellentExport.csv(this, 'tbl');"
+      >Export to CSV</a
+    >
+  </body>
+</html>
